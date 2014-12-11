@@ -1,5 +1,5 @@
 (function() {
-  var arc, color, dataTotal, dummy, height, i, innerRadius, margin, outerRadius, pie, svg, width;
+  var arc, color, dataTotal, height, i, innerRadius, margin, outerRadius, pie, svg, width;
 
   margin = {
     top: 50,
@@ -11,8 +11,6 @@
   width = 600 - margin.left - margin.right;
 
   height = 600 - margin.top - margin.bottom;
-
-  dummy = [11, 32, 26, 16, 15];
 
   i = 0;
 
@@ -35,17 +33,14 @@
 
   svg = d3.select('body').append('svg').attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).attr('class', 'piechart').append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.json("app_data.json", function(error, data) {
+  d3.json("twentyfourhours.json", function(error, data) {
     var arcs, moduleArray, names, percentages;
-    moduleArray = $.map(data.app.modules, function(value, index) {
-      return [value];
-    });
-    console.log(moduleArray);
+    moduleArray = data.app_analytic.session_count_percentages;
     i = 0;
     percentages = [];
     names = [];
     while (i < moduleArray.length) {
-      percentages.push(moduleArray[i].percentage);
+      percentages.push(moduleArray[i][1]);
       names.push(moduleArray[i].module_name);
       i++;
     }

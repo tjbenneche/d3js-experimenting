@@ -7,8 +7,6 @@ margin =
 width = 600 - margin.left - margin.right
 height = 600 - margin.top - margin.bottom
 
-dummy = [11, 32, 26, 16, 15]
-
 i = 0
 dataTotal = 0
 while i < dummy.length
@@ -33,16 +31,13 @@ svg = d3.select('body')
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
-d3.json "app_data.json", (error, data) ->
-  moduleArray = $.map(data.app.modules, (value, index) ->
-    [value]
-  )
-  console.log(moduleArray)
+d3.json "twentyfourhours.json", (error, data) ->
+  moduleArray = data.app_analytic.session_count_percentages
   i = 0
   percentages = []
   names = []
   while i < moduleArray.length
-    percentages.push(moduleArray[i].percentage)
+    percentages.push(moduleArray[i][1])
     names.push(moduleArray[i].module_name)
     i++
   arcs = svg.selectAll('g.arc')

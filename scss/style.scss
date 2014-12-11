@@ -1,13 +1,20 @@
-.bar {
-  fill: steelblue;
-}
-
-.bar:hover {
-  fill: brown;
-}
 
 .axis {
   font: 10px sans-serif;
+}
+.session-data-section{
+  display:inline-block;
+  width: calc(200%/3);
+  .session-box{
+    width:calc(100%/3 - 40px);
+    margin:20px;
+    border:1px solid blue;
+    height:50px;
+  }
+}
+
+.area{
+  fill:steelblue;
 }
 
 .axis path,
@@ -17,12 +24,25 @@
   shape-rendering: crispEdges;
 }
 
-.x.axis path {
-  display: none;
+.axis.x{
+  .tick:first-child{
+    display:none;
+  }
+  .tick:nth-child(odd){
+    text{
+      display:none;
+    }
+  }
 }
 
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
 
-.piechart{
-  display:block;
-  margin:auto;
+.dot {
+  fill: white;
+  stroke: steelblue;
+  stroke-width: 1.5px;
 }
