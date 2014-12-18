@@ -25,12 +25,29 @@
 }
 
 .axis.x{
-  .tick:first-child{
-    display:none;
-  }
-  .tick:nth-child(odd){
+  .tick{
     text{
       display:none;
+    }
+  }
+}
+
+.app_analytic, .app_thirty_day_analytic{
+  &+.axis.x{
+    .tick:nth-child(3n){
+      text{
+        display:block;
+      }
+    }
+  }
+}
+
+.app_seven_day_analytic{
+  &+.axis.x{
+    .tick{
+      text{
+        display:block;
+      }
     }
   }
 }
